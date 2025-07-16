@@ -2,6 +2,8 @@
 
 A comprehensive toolset for auditing Google Cloud Platform (GCP) resources and generating dynamic log filters for monitoring and compliance.
 
+All the scripts developed during the CNAM Mémoire implementation.
+
 ## 🔧 Tools Overview
 
 ### 1. `count_gcp_resources.sh`
