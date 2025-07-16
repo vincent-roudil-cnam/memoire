@@ -1,0 +1,51 @@
+# Configuration Terraform pour pubsub_logs_config_project.tf
+# Exemple pour project-level logging configuration
+
+# ID du projet GCP
+project_id = "my-specific-project"
+
+# Préfixe pour les ressources
+prefix = "project-logs"
+
+# Fichier de configuration JSON (sera nommé {project_id}_filter.json)
+config_file = "my-specific-project_filter.json"
+
+# Type de filtre à utiliser
+filter_type = "all_services"
+
+# Services détectés dans le projet (à adapter selon votre contexte)
+detected_services = [
+  "compute",
+  "storage", 
+  "gke",
+  "cloudsql",
+  "functions",
+  "cloudrun",
+  "iam",
+  "pubsub",
+  "vertexai",
+  "firestore",
+  "bigquery"
+]
+
+# Configuration du bucket GCS
+bucket_location = "EU"
+bucket_storage_class = "STANDARD"
+log_retention_days = 365
+enable_versioning = false
+
+# Environnement
+environment = "prod"
+
+# Exemple d'utilisation:
+# terraform plan -var-file="terraform.tfvars.project.example"
+# terraform apply -var-file="terraform.tfvars.project.example"
+
+# Exemple avec services spécifiques:
+# detected_services = ["compute", "storage", "gke"]
+# filter_type = "compute"  # ou "storage", "gke", etc.
+
+# Pour détecter automatiquement les services:
+# 1. Exécuter: ./count_gcp_resources.sh my-specific-project
+# 2. Adapter la liste detected_services selon les résultats
+# 3. Utiliser: ./generate_dynamic_filter.py my-specific-project --services compute storage gke

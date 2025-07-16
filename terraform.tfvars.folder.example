@@ -1,0 +1,30 @@
+# Configuration Terraform pour pubsub_logs_config_folder.tf
+# Exemple pour folder-level logging configuration
+
+# ID du folder GCP racine
+folder_id = "123456789"
+
+# ID de l'organisation GCP
+organization_id = "987654321"
+
+# ID du projet GCP où créer les ressources Pub/Sub
+project_id = "my-logging-project"
+
+# Préfixe pour les ressources
+prefix = "folder-logs"
+
+# Fichier de configuration JSON
+config_file = "json"
+
+# Configuration du bucket GCS
+bucket_location = "EU"
+bucket_storage_class = "STANDARD"
+log_retention_days = 365
+enable_versioning = false
+
+# Environnement
+environment = "prod"
+
+# Exemple d'utilisation:
+# terraform plan -var-file="terraform.tfvars.folder.example"
+# terraform apply -var-file="terraform.tfvars.folder.example"
